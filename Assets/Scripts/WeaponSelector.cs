@@ -27,10 +27,10 @@ public class WeaponSelector : MonoBehaviour {
         {
             SwitchToCrossbow();
         }
-        if (Input.GetButtonDown("Select3"))
-        {
-            SwitchToBombs();
-        }
+        //if (Input.GetButtonDown("Select3"))
+        //{
+        //    SwitchToBombs();
+        //}
     }
 
     private void SwitchToSickle()

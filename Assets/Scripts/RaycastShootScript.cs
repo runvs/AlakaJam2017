@@ -12,6 +12,9 @@ public class RaycastShootScript : MonoBehaviour {
     public Transform gunEnd;
     public Collector col;
 
+    public int ammunition = 2;
+    public UnityEngine.UI.Text ammunitionText;
+
     private Camera fpsCam;
     private WaitForSeconds shotDuration = new WaitForSeconds(0.0125f);
     private LineRenderer laserLine;
@@ -28,8 +31,13 @@ public class RaycastShootScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
+
+        ammunitionText.text = "Ammunition: " + ammunition.ToString();
+
+
+        if (Input.GetButtonDown("Fire1") && Time.time > nextFire && ammunition > 0)
         {
+            ammunition--;
             nextFire = Time.time + fireTimer;
             StartCoroutine(ShotEffect());
             System.Console.WriteLine("shoot");
