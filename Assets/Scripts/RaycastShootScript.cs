@@ -40,6 +40,14 @@ public class RaycastShootScript : MonoBehaviour {
                 if (hit.rigidbody != null)
                 {
                     hit.rigidbody.AddForce(-hit.normal * hitForce);
+                    RespawnScript rs = hit.transform.gameObject.GetComponent<RespawnScript>();
+                    if (rs != null)
+                    {
+                        this.StartCoroutine(rs.RespawnEffect());
+                        rs.gameObject.SetActive(false);
+                    }
+
+
                 }
             }
             else
