@@ -13,7 +13,7 @@ public class RaycastShootScript : MonoBehaviour {
     public Collector col;
 
     private Camera fpsCam;
-    private WaitForSeconds shotDuration = new WaitForSeconds(0.1f);
+    private WaitForSeconds shotDuration = new WaitForSeconds(0.0125f);
     private LineRenderer laserLine;
     private float nextFire;
 
