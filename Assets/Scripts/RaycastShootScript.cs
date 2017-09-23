@@ -10,11 +10,14 @@ public class RaycastShootScript : MonoBehaviour {
     public float weaponRange = 50f;
     public float hitForce = 100f;
     public Transform gunEnd;
+    public Collector col;
 
     private Camera fpsCam;
     private WaitForSeconds shotDuration = new WaitForSeconds(0.1f);
     private LineRenderer laserLine;
     private float nextFire;
+
+
 
 	void Start ()
     {
@@ -43,6 +46,7 @@ public class RaycastShootScript : MonoBehaviour {
                     RespawnScript rs = hit.transform.gameObject.GetComponent<RespawnScript>();
                     if (rs != null)
                     {
+                        col.Collect(rs.type);
                         this.StartCoroutine(rs.RespawnEffect());
                         rs.gameObject.SetActive(false);
                     }

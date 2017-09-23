@@ -9,6 +9,7 @@ public class SickleScript : MonoBehaviour {
     private float nextFire;
     public int gunDamage = 1;
     public float hitForce = 100f;
+    public Collector col;
 
     private BoxCollider c;
     private Camera fpsCam;
@@ -39,7 +40,16 @@ public class SickleScript : MonoBehaviour {
             {
                 if (c.gameObject.tag == "Attackable")
                 {
-                    c.gameObject.GetComponent<Rigidbody>().AddForce(fpsCam.transform.forward * hitForce);
+
+                    //c.gameObject.GetComponent<Rigidbody>().AddForce(fpsCam.transform.forward * hitForce);
+
+                    RespawnScript rs = c.gameObject.GetComponent<RespawnScript>();
+                    if (rs != null)
+                    {
+                        col.Collect(rs.type);
+                        this.StartCoroutine(rs.RespawnEffect());
+                        rs.gameObject.SetActive(false);
+                    }
                 }
             }
         }
