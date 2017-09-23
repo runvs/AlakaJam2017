@@ -25,7 +25,7 @@ public class Collector : MonoBehaviour
     public int WindTarget = 0;
     public UnityEngine.UI.Text TextWindTarget;
 
-    public int collected = 0;
+    public int collected = -1;
     public UnityEngine.UI.Text CollectedText;
 
 
@@ -72,7 +72,7 @@ public class Collector : MonoBehaviour
         Plants -= PlantsTarget;
         Coal -= CoalTarget;
 
-        
+        collected++;
         RandomizeTargets();
     }
 

@@ -5,15 +5,16 @@ using UnityEngine;
 public class RespawnScript : MonoBehaviour
 {
 
-    private WaitForSeconds WaitTilRespawn;
+    private WaitForSeconds WaitTilRespawn ;
 
     public int type;
 
 	// Use this for initialization
 	void Start ()
     {
-		
-	}
+        WaitTilRespawn = new WaitForSeconds(Random.Range(3, 15));
+
+    }
 	
 	// Update is called once per frame
 	void Update ()
