@@ -16,7 +16,8 @@ public class RaycastShootScript : MonoBehaviour {
     private LineRenderer laserLine;
     private float nextFire;
 
-	void Start () {
+	void Start ()
+    {
         laserLine = GetComponent<LineRenderer>();
         fpsCam = GetComponentInParent<Camera>();
 	}
@@ -28,6 +29,7 @@ public class RaycastShootScript : MonoBehaviour {
         {
             nextFire = Time.time + fireTimer;
             StartCoroutine(ShotEffect());
+            System.Console.WriteLine("shoot");
 
             Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
             laserLine.SetPosition(0, gunEnd.position);
@@ -50,7 +52,7 @@ public class RaycastShootScript : MonoBehaviour {
 
     private IEnumerator ShotEffect()
     {
-        System.Console.WriteLine("shoot");
+        
         laserLine.enabled = true;
         yield return shotDuration;
         laserLine.enabled = false;
